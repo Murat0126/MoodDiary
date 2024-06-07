@@ -1,0 +1,45 @@
+name: mood_diary
+description: "Test assignment for internship"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_localizations:
+    sdk: flutter
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.9
+  calendar_date_picker2: ^1.0.3
+  connectivity_plus: ^5.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+     - assets/
+     - assets/images/
+
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/NunitoBold.ttf
+          weight: 800
+        - asset: assets/fonts/NunitoExtraBold.ttf
+          weight: 400
+        - asset: assets/fonts/NunitoMedium.ttf
+          weight: 700
+        - asset: assets/fonts/NunitoRegular.ttf
+          weight: 500
+        - asset: assets/fonts/NunitoSemiBold.ttf
+          weight: 600
+
