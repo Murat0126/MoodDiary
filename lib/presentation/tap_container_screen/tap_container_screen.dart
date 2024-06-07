@@ -5,7 +5,6 @@ import 'package:mood_diary/widgets/app_bar/app_bar_subtitle.dart';
 import 'package:mood_diary/widgets/app_bar/app_bar_trailing_image.dart';
 import '../../core/app_export.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
-// import '../k0_page/k0_page.dart';
 
 class TabContainerScreen extends StatefulWidget {
   const TabContainerScreen({Key? key})

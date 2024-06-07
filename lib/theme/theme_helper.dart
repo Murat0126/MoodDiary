@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
 
@@ -16,8 +15,8 @@ class ThemeHelper {
     "lightCode": ColorSchemes.lightCodeColorScheme,
   };
 
-  void changeTheme(String _newTheme) {
-    _appTheme = _newTheme;
+  void changeTheme(String newTheme) {
+    _appTheme = newTheme;
   }
 
   LightCodeColors _getThemeColors() {
@@ -28,21 +27,23 @@ class ThemeHelper {
     var colorScheme =
         _supportedColorScheme[_appTheme] ?? ColorSchemes.lightCodeColorScheme;
     return ThemeData(
-        visualDensity: VisualDensity.standard,
-        colorScheme: colorScheme,
-        textTheme: TextThemes.textTheme(colorScheme),
-        scaffoldBackgroundColor: appTheme.white7002,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-                backgroundColor: appTheme.gray100,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(22),
-                ),
-                visualDensity: const VisualDensity(
-                  vertical: -4,
-                  horizontal: -4,
-                ),
-                padding: EdgeInsets.zero)));
+      visualDensity: VisualDensity.standard,
+      colorScheme: colorScheme,
+      textTheme: TextThemes.textTheme(colorScheme),
+      scaffoldBackgroundColor: appTheme.white7002,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: appTheme.gray100,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(22),
+            ),
+            visualDensity: const VisualDensity(
+              vertical: -4,
+              horizontal: -4,
+            ),
+            padding: EdgeInsets.zero),
+      ),
+    );
   }
 
   LightCodeColors themeColor() => _getThemeColors();

@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../core/app_export.dart';
 
 extension ImageTypeExtension on String {
   ImageType get imageType {
@@ -21,7 +20,8 @@ enum ImageType { svg, png, network, file, unknown }
 
 // ignore_for_file: must_be_immutable
 class CustomImageView extends StatelessWidget {
-  CustomImageView( {super.key,
+  CustomImageView({
+    super.key,
     this.height,
     this.width,
     this.radius,
@@ -72,27 +72,25 @@ class CustomImageView extends StatelessWidget {
     );
   }
 
-//build the image with border radius
   _buildCircleImage() {
     if (radius != null) {
       return ClipRRect(
-          borderRadius: radius ?? const BorderRadius.all(Radius.circular(0)),
-          child: _buildImageWithBorder(),
+        borderRadius: radius ?? const BorderRadius.all(Radius.circular(0)),
+        child: _buildImageWithBorder(),
       );
     } else {
       return _buildImageWithBorder();
     }
   }
 
-//build the image with border and border radius
   _buildImageWithBorder() {
     if (border == null) {
       return Container(
-          decoration: BoxDecoration(
-            border: border,
-            borderRadius: radius,
-          ),
-          child: _buildImageView(),
+        decoration: BoxDecoration(
+          border: border,
+          borderRadius: radius,
+        ),
+        child: _buildImageView(),
       );
     } else {
       return _buildImageView();
@@ -100,67 +98,65 @@ class CustomImageView extends StatelessWidget {
   }
 
   Widget _buildImageView() {
-    if(imagePath!=null){
-    switch (imagePath!.imageType) {
-      case ImageType.svg:
-        return SizedBox(
-          width: width,
-          height: height,
-          child: SvgPicture.asset(
-            imagePath!,
+    if (imagePath != null) {
+      switch (imagePath!.imageType) {
+        case ImageType.svg:
+          return SizedBox(
             width: width,
             height: height,
-            fit: fit ?? BoxFit.contain,
-            colorFilter: color != null
-                ? ColorFilter.mode(
-                color ?? Colors.transparent, BlendMode.srcIn)
-                : null,
-          ),
-        );
-      case ImageType.file:
-        return Image.file(
-          File(imagePath!),
-          width: width,
-          height: height,
-          fit: fit ?? BoxFit.cover,
-          color: color,
-        );
+            child: SvgPicture.asset(
+              imagePath!,
+              width: width,
+              height: height,
+              fit: fit ?? BoxFit.contain,
+              colorFilter: color != null
+                  ? ColorFilter.mode(
+                      color ?? Colors.transparent, BlendMode.srcIn)
+                  : null,
+            ),
+          );
+        case ImageType.file:
+          return Image.file(
+            File(imagePath!),
+            width: width,
+            height: height,
+            fit: fit ?? BoxFit.cover,
+            color: color,
+          );
 
-      case ImageType.network:
-        return CachedNetworkImage(
-          height: height,
-          width: width,
-          imageUrl: imagePath!,
-          fit: fit ?? BoxFit.cover,
-          color: color,
-          placeholder: (context, url) =>
-              SizedBox(
-                height: height,
-                width: width,
-                child: LinearProgressIndicator(
-                  color: Colors.grey.shade200,
-                  backgroundColor: Colors.grey.shade100,
-                ),
+        case ImageType.network:
+          return CachedNetworkImage(
+            height: height,
+            width: width,
+            imageUrl: imagePath!,
+            fit: fit ?? BoxFit.cover,
+            color: color,
+            placeholder: (context, url) => SizedBox(
+              height: height,
+              width: width,
+              child: LinearProgressIndicator(
+                color: Colors.grey.shade200,
+                backgroundColor: Colors.grey.shade100,
               ),
-          errorWidget: (context, url, error) =>
-              Image.asset(
-                placeHolder,
-                height: height,
-                width: width,
-                fit: fit ?? BoxFit.cover,
-                color: color,
-              ),
-        );
-      case ImageType.png:
-      default:
-        return Image.asset(
-          imagePath!,
-          height: height,
-          width: width,
-          fit: fit ?? BoxFit.cover,
-          color: color,
-        );
-    }
+            ),
+            errorWidget: (context, url, error) => Image.asset(
+              placeHolder,
+              height: height,
+              width: width,
+              fit: fit ?? BoxFit.cover,
+              color: color,
+            ),
+          );
+        case ImageType.png:
+        default:
+          return Image.asset(
+            imagePath!,
+            height: height,
+            width: width,
+            fit: fit ?? BoxFit.cover,
+            color: color,
+          );
+      }
     }
     return const SizedBox();
   }

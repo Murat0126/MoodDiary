@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mood_diary/presentation/tap_container_screen/tap_container_screen.dart';
-import 'package:mood_diary/widgets/app_bar/custom_app_bar.dart';
 import '../../core/app_export.dart';
 
 import '../../theme/custom_button_style.dart';

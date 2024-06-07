@@ -1,6 +1,4 @@
-import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import '../app_export.dart';
 
 const num FIGMA_DESIGN_WIDTH = 305;
 const num FIGMA_DESIGN_HEIGHT = 700;
