@@ -19,37 +19,10 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage>
     with AutomaticKeepAliveClientMixin<MainPage> {
-  TextEditingController groupthirteenController = TextEditingController();
-
-  var product_list = [
-    {
-      "fearText": "Радость",
-      "picture": ImageConstant.imgRectangleJoy,
-    },
-    {
-      "fearText": "Страх",
-      "picture": ImageConstant.imgRectangleFear,
-    },
-    {
-      "fearText": "Бешенство",
-      "picture": ImageConstant.imgRectangleRage,
-    },
-    {
-      "fearText": "Грусть",
-      "picture": ImageConstant.imgRectangleSadness,
-    },
-    {
-      "fearText": "Спокойствие",
-      "picture": ImageConstant.imgRectangleCalm,
-    },
-    {
-      "fearText": "Сила",
-      "picture": ImageConstant.imgRectangleStrength,
-    },
-  ];
+  TextEditingController editCommentController = TextEditingController();
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -122,7 +95,7 @@ class MainPageState extends State<MainPage>
         },
         itemCount: 1,
         itemBuilder: (context, index) {
-          return EmotionlistItemWidget();
+          return const EmotionlistItemWidget();
         },
       ),
     );
@@ -286,7 +259,7 @@ class MainPageState extends State<MainPage>
         Padding(
           padding: EdgeInsets.only(right: 20.h),
           child: CustomTextFormField(
-            controller: groupthirteenController,
+            controller: editCommentController,
             hintText: "Сегодня я чувствую себя хорошо|",
             textInputAction: TextInputAction.done,
             maxLines: 4,
